@@ -44,13 +44,13 @@
 					fresh: 'fresh=true',
 					element: 'element=._canvas',
 					format: 'format=png',
-					response_type: 'response_type=image'
+					response_type: 'response_type=json'
 				}
 
 				// console.log(`${urlReqBase}?${params.access_key}&${params.url}&${params.fresh}&${params.element}`)
 
 				const xhttp = new XMLHttpRequest();
-				const response = xhttp.open("GET", `
+				xhttp.open("GET", `
 					${urlReqBase}?
 					${params.access_key}&
 					${params.url}&
@@ -61,11 +61,9 @@
 					false
 				);
 
-				
 				xhttp.onreadystatechange = function(){//Função a ser chamada quando a requisição retornar do servidor
 				    if ( xhttp.readyState == 4 && xhttp.status == 200 ) {//Verifica se o retorno do servidor deu certo
 				        console.log(xhttp);
-						console.log('response', response);
 				        // window.location.href=xhttp.responseURL;
 
 						var url = window.URL.createObjectURL(xhttp.responseURL);
