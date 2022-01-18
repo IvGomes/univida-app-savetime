@@ -50,7 +50,7 @@
 				// console.log(`${urlReqBase}?${params.access_key}&${params.url}&${params.fresh}&${params.element}`)
 
 				const xhttp = new XMLHttpRequest();
-				xhttp.open("GET", `
+				const response = xhttp.open("GET", `
 					${urlReqBase}?
 					${params.access_key}&
 					${params.url}&
@@ -60,6 +60,8 @@
 					${params.response_type}`,
 					false
 				);
+
+				console.log('response', response);
 
 				xhttp.onreadystatechange = function(){//Função a ser chamada quando a requisição retornar do servidor
 				    if ( xhttp.readyState == 4 && xhttp.status == 200 ) {//Verifica se o retorno do servidor deu certo
