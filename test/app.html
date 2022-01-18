@@ -41,19 +41,11 @@
 			//REQUEST
 			function saveImage(){
 				const instance = axios.create({
-					baseURL: 'https://api.apiflash.com/v1/urltoimage'
+					baseURL: 'https://api.apiflash.com/v1'
 				})
 
-				const p = {
-					access_key: 'access_key=ef0249bdde07485695646bb16f231f4c',
-					url: 'url=https://univida-savetime.herokuapp.com/',
-					fresh: 'fresh=true',
-					element: 'element=._canvas',
-					format: 'format=png',
-					response_type: 'response_type=json'
-				}
-
-				axios.get('https://api.apiflash.com/v1/urltoimage?access_key=ef0249bdde07485695646bb16f231f4c', {
+				instance.get('/urltoimage?access_key=ef0249bdde07485695646bb16f231f4c', {
+					responseType: 'blob',
 					params: {
 						url: 'https://univida-savetime.herokuapp.com/',
 						fresh: 'true',
@@ -63,7 +55,13 @@
 					}
 				})
 				.then((response)=>{
-					console.log(response)
+					console.log(response.data);
+					const url = window.URL.createObjectURL(new Blob([response.data]));
+					const link = document.createElement('a');
+					link.href = url;
+					link.setAttribute("download", "testeimg.png");
+					document.body.appendChild(link);
+					link.click();
 				})
 
 				// console.log(`${urlReqBase}?${params.access_key}&${params.url}&${params.fresh}&${params.element}`)
@@ -74,10 +72,6 @@
 				//         // window.location.href=xhttp.responseURL;
 
 				// 		const url = xhttp.response.url;
-                // 		const baixar = document.createElement('a');
-				// 		baixar.href = url;
-				// 		baixar.download = "imagem";
-				// 		baixar.click();
 				// 		// window.URL.revokeObjectURL(url);
 				// 		// a.remove();
 				//     } else {
