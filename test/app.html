@@ -61,11 +61,11 @@
 					false
 				);
 
-				console.log('response', response);
-
+				
 				xhttp.onreadystatechange = function(){//Função a ser chamada quando a requisição retornar do servidor
 				    if ( xhttp.readyState == 4 && xhttp.status == 200 ) {//Verifica se o retorno do servidor deu certo
 				        console.log(xhttp);
+						console.log('response', response);
 				        // window.location.href=xhttp.responseURL;
 
 						var url = window.URL.createObjectURL(xhttp.responseURL);
