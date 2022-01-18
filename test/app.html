@@ -44,7 +44,7 @@
 					fresh: 'fresh=true',
 					element: 'element=._canvas',
 					format: 'format=png',
-					response_type: 'response_type=json'
+					response_type: 'response_type=image'
 				}
 
 				// console.log(`${urlReqBase}?${params.access_key}&${params.url}&${params.fresh}&${params.element}`)
@@ -66,7 +66,7 @@
 				        console.log(xhttp);
 				        // window.location.href=xhttp.responseURL;
 
-						var url = window.URL.createObjectURL(xhttp.responseURL);
+						var url = xhttp.response;
                 		var a = document.createElement('a');
                 		document.body.appendChild(a);
 						a.setAttribute('style', 'display: none');
