@@ -62,7 +62,17 @@
 				xhttp.onreadystatechange = function(){//Função a ser chamada quando a requisição retornar do servidor
 				    if ( xhttp.readyState == 4 && xhttp.status == 200 ) {//Verifica se o retorno do servidor deu certo
 				        console.log(xhttp);
-				        window.location.href=xhttp.responseURL;
+				        // window.location.href=xhttp.responseURL;
+
+						var url = window.URL.createObjectURL(xhttp.responseURL);
+                		var a = document.createElement('a');
+                		document.body.appendChild(a);
+						a.setAttribute('style', 'display: none');
+						a.href = url;
+						a.download = "produtos.xls";
+						a.click();
+						window.URL.revokeObjectURL(url);
+						a.remove();
 				    }
 				}
 
