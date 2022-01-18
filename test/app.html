@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Save Time app</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			border: none;
+		}
+		.canvas {
+			position: relative;
+			display: flex;
+			width: 540px;
+			height: 960px;
+			background-color: #eee;
+		}
+	</style>
+</head>
+<body>
+	<div class="conteiner">
+		<div class="_canvas">
+			<div id="">
+				<div>sjj sjjnsjs</div>
+			</div>
+		</div>
+		<button class="_save_image" onclick="saveImage()">
+			Exportar
+		</button>
+	</div>
+	
+	<footer>
+		<script type="text/javascript">
+
+			function saveImage(){
+
+				//REQUEST
+				const urlReqBase = 'https://api.apiflash.com/v1/urltoimage';
+				const params = {
+					access_key: 'access_key=73ce53a343d24b79a531f26028dcefda',
+					url: 'url=file:///C:/Users/IDRaise/Downloads/Univida/_others/appSaveTime/test/index.html',
+					fresh: 'fresh=true',
+					element: 'element=._canvas'
+				}
+
+				console.log(`${urlReqBase}?${params.access_key}&${params.url}&${params.fresh}&${params.element}`)
+
+				const xhttp = new XMLHttpRequest();
+				xhttp.open("GET", `${urlReqBase}?${params.access_key}&${params.url}&${params.fresh}&${params.element}`, false);
+
+				xhttp.onreadystatechange = function(){//Função a ser chamada quando a requisição retornar do servidor
+				    if ( xhttp.readyState == 4 && xhttp.status == 200 ) {//Verifica se o retorno do servidor deu certo
+				        console.log(xhttp.responseText);
+				        //window.location.href=dataUri;
+				    }
+				}
+
+				xhttp.send()
+
+
+				//const canvas = document.getElementsByClassName('canvas');
+
+				//canvas.width = 1920;
+				//canvas.height = 1080;
+
+				//const dataUri = canvas[0].toDataURL("image/png");
+				
+			}
+
+		</script>
+	</footer>
+
+</body>
+</html>
