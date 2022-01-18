@@ -51,7 +51,7 @@
 						fresh: 'true',
 						element: '._canvas',
 						format: 'png',
-						response_type: 'json'
+						response_type: 'image'
 					}
 				})
 				.then((response)=>{
@@ -63,27 +63,6 @@
 					document.body.appendChild(link);
 					link.click();
 				})
-
-				// console.log(`${urlReqBase}?${params.access_key}&${params.url}&${params.fresh}&${params.element}`)
-
-				// xhttp.onreadystatechange = function(){//Função a ser chamada quando a requisição retornar do servidor
-				//     if ( xhttp.readyState == 4 && xhttp.status == 200 ) {//Verifica se o retorno do servidor deu certo
-				//         console.log(xhttp);
-				//         // window.location.href=xhttp.responseURL;
-
-				// 		const url = xhttp.response.url;
-				// 		// window.URL.revokeObjectURL(url);
-				// 		// a.remove();
-				//     } else {
-				// 		const url = 'https://api.apiflash.com/v1/urltoimage/cache/o1eo6lqz8w.png?access_key=73ce53a343d24b79a531f26028dcefda';
-                // 		const baixar = document.createElement('a');
-				// 		baixar.href = url;
-				// 		baixar.download = "imagem";
-				// 		baixar.click();
-				// 	}
-				// }
-
-				// xhttp.send()
 				
 			}
 
