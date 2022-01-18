@@ -42,13 +42,22 @@
 					access_key: 'access_key=73ce53a343d24b79a531f26028dcefda',
 					url: 'url=https://univida-savetime.herokuapp.com/',
 					fresh: 'fresh=true',
-					element: 'element=._canvas'
+					element: 'element=._canvas',
+					format: 'format=png'
 				}
 
-				console.log(`${urlReqBase}?${params.access_key}&${params.url}&${params.fresh}&${params.element}`)
+				// console.log(`${urlReqBase}?${params.access_key}&${params.url}&${params.fresh}&${params.element}`)
 
 				const xhttp = new XMLHttpRequest();
-				xhttp.open("GET", `${urlReqBase}?${params.access_key}&${params.url}&${params.fresh}&${params.element}`, false);
+				xhttp.open("GET", `
+					${urlReqBase}?
+					${params.access_key}&
+					${params.url}&
+					${params.fresh}&
+					${params.element}&
+					${params.format}`,
+					false
+				);
 
 				xhttp.onreadystatechange = function(){//Função a ser chamada quando a requisição retornar do servidor
 				    if ( xhttp.readyState == 4 && xhttp.status == 200 ) {//Verifica se o retorno do servidor deu certo
@@ -58,14 +67,6 @@
 				}
 
 				xhttp.send()
-
-
-				//const canvas = document.getElementsByClassName('canvas');
-
-				//canvas.width = 1920;
-				//canvas.height = 1080;
-
-				//const dataUri = canvas[0].toDataURL("image/png");
 				
 			}
 
