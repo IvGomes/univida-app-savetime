@@ -43,7 +43,8 @@
 					url: 'url=https://univida-savetime.herokuapp.com/',
 					fresh: 'fresh=true',
 					element: 'element=._canvas',
-					format: 'format=png'
+					format: 'format=png',
+					response_type: 'image'
 				}
 
 				// console.log(`${urlReqBase}?${params.access_key}&${params.url}&${params.fresh}&${params.element}`)
@@ -55,7 +56,8 @@
 					${params.url}&
 					${params.fresh}&
 					${params.element}&
-					${params.format}`,
+					${params.format}&
+					${params.response_type}`,
 					false
 				);
 
@@ -69,7 +71,7 @@
                 		document.body.appendChild(a);
 						a.setAttribute('style', 'display: none');
 						a.href = url;
-						a.download = "produtos.xls";
+						a.download = "produtos.png";
 						a.click();
 						window.URL.revokeObjectURL(url);
 						a.remove();
