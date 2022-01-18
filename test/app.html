@@ -41,7 +41,7 @@
 			//REQUEST
 			function saveImage(){
 				const instance = axios.create({
-					baseURL: 'https://api.apiflash.com/v1/urltoimage?'
+					baseURL: 'https://api.apiflash.com/v1/urltoimage'
 				})
 
 				const p = {
@@ -53,7 +53,7 @@
 					response_type: 'response_type=json'
 				}
 
-				instance.get(`
+				instance.get('?', `
 					${p.access_key}&
 					${p.url}&
 					${p.fresh}&
