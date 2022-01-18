@@ -3,7 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 	<title>Save Time app</title>
+
 	<style type="text/css">
 		* {
 			margin: 0;
@@ -18,6 +21,7 @@
 			background-color: #eee;
 		}
 	</style>
+
 </head>
 <body>
 	<div class="conteiner">
@@ -34,51 +38,57 @@
 	<footer>
 		<script type="text/javascript">
 
+			//REQUEST
 			function saveImage(){
+				const instance = axios.create({
+					baseURL: 'https://api.apiflash.com/v1/urltoimage?'
+				})
 
-				//REQUEST
-				const urlReqBase = 'https://api.apiflash.com/v1/urltoimage';
-				const params = {
+				const p = {
 					access_key: 'access_key=73ce53a343d24b79a531f26028dcefda',
 					url: 'url=https://univida-savetime.herokuapp.com/',
 					fresh: 'fresh=true',
 					element: 'element=._canvas',
 					format: 'format=png',
-					response_type: 'response_type=image'
+					response_type: 'response_type=json'
 				}
+
+				instance.get(`
+					${p.access_key}&
+					${p.url}&
+					${p.fresh}&
+					${p.element}&
+					${p.format}&
+					${p.response_type}
+				`)
+				.then((response)=>{
+					console.log(response)
+				})
 
 				// console.log(`${urlReqBase}?${params.access_key}&${params.url}&${params.fresh}&${params.element}`)
 
-				const xhttp = new XMLHttpRequest();
-				xhttp.open("GET", `
-					${urlReqBase}?
-					${params.access_key}&
-					${params.url}&
-					${params.fresh}&
-					${params.element}&
-					${params.format}&
-					${params.response_type}`,
-					false
-				);
+				// xhttp.onreadystatechange = function(){//Função a ser chamada quando a requisição retornar do servidor
+				//     if ( xhttp.readyState == 4 && xhttp.status == 200 ) {//Verifica se o retorno do servidor deu certo
+				//         console.log(xhttp);
+				//         // window.location.href=xhttp.responseURL;
 
-				xhttp.onreadystatechange = function(){//Função a ser chamada quando a requisição retornar do servidor
-				    if ( xhttp.readyState == 4 && xhttp.status == 200 ) {//Verifica se o retorno do servidor deu certo
-				        console.log(xhttp);
-				        // window.location.href=xhttp.responseURL;
+				// 		const url = xhttp.response.url;
+                // 		const baixar = document.createElement('a');
+				// 		baixar.href = url;
+				// 		baixar.download = "imagem";
+				// 		baixar.click();
+				// 		// window.URL.revokeObjectURL(url);
+				// 		// a.remove();
+				//     } else {
+				// 		const url = 'https://api.apiflash.com/v1/urltoimage/cache/o1eo6lqz8w.png?access_key=73ce53a343d24b79a531f26028dcefda';
+                // 		const baixar = document.createElement('a');
+				// 		baixar.href = url;
+				// 		baixar.download = "imagem";
+				// 		baixar.click();
+				// 	}
+				// }
 
-						var url = xhttp.response;
-                		var a = document.createElement('a');
-                		document.body.appendChild(a);
-						a.setAttribute('style', 'display: none');
-						a.href = url;
-						a.download = "produtos.png";
-						a.click();
-						// window.URL.revokeObjectURL(url);
-						// a.remove();
-				    }
-				}
-
-				xhttp.send()
+				// xhttp.send()
 				
 			}
 
